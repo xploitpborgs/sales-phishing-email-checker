@@ -1,0 +1,345 @@
+Delivered-To: borgsbeto@gmail.com
+Received: by 2002:a05:6638:460a:b0:4fd:d6ce:de2 with SMTP id bw10csp122435jab;
+        Fri, 13 Jun 2025 00:26:14 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH5xkFGOnTt137BVi7BCWWdx/VYeCS/m2Z/Qf+upkjjjJm1LyEjyuDN7VC23gZ9cLjtyN0W
+X-Received: by 2002:a05:622a:1b06:b0:494:a436:5af6 with SMTP id d75a77b69052e-4a72ff32689mr31826441cf.47.1749799574311;
+        Fri, 13 Jun 2025 00:26:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1749799574; cv=none;
+        d=google.com; s=arc-20240605;
+        b=OqGML98H4xTW34IqtgipJIIhTImkQyZ16TwgkJSi1mmkuaEwl8bOn9azsKciVaUiv+
+         AuPzCteXhr16KSfU01SMJEjMyPryBcUXJ/geiRFpPElCd7lyAQviiWo6o+lRSLIokTL+
+         DaUmTLXI26SH5J4S/Cvlxfa7iAJc7B1mZmp4IdbEaOTi0ABzco7TbOlNuQHIk+UpGiuR
+         T1cVWRd+MvWAe9pFjrlTt8sewWbFtfp4s/ur8nKEl2A3LoyZf2yfrI5Nu9Ua4TPCOVJ+
+         HOmLGaRO7mOyZns5GUOTXgF8wgtbIQtSu0seOnbq60BAKltQu1adUnOAlQCKynQfV0NC
+         pcNQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:mime-version:from:date
+         :content-transfer-encoding:dkim-signature:dkim-signature;
+        bh=VNp9qlXhgMyU5n39rOZdQ/D9xa61AyXa/CKrdB6cZsM=;
+        fh=3LGJJ380z/1CK1rk+3gpPEY65aT4GmUHZAWsXeXvuSE=;
+        b=QsNAVCdC6giYKcnhuecMVsVXoR7CZgqDtDj5O7zzqS7loRncrJDJvizy4NMDrYPvy3
+         vVmTCvPqUuHv5slzan6+QWtx41YOaQ2+2+quTQvBh51yff2NiHqB8a/BA4FCtrtQ+ALN
+         CcHJJ+up4KkNmd0rnwFmT9DQaUWRpXjbrxSvSsV3n+cdutG0R7m6QqEMqd1oUiW/JkQX
+         JM8VdeMtfL/JD5ULOnX2Lkkg2tqIcnu4WQvpCAJl/tM/gMCYLz5lGT6/lYzs52P7Pzuv
+         /fkEzdWg53BqRL9SAnmFpsRPB0DDm6Am0BmIyzjjPfNAXfnPvOgpZAXDP+fAIYvXkkPG
+         PGOg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@noticing.ra.kroll.com header.s=s1 header.b=Sh0lTuJr;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b="by0lWIQ/";
+       spf=pass (google.com: domain of bounces+52614290-579c-borgsbeto=gmail.com@em8148.noticing.ra.kroll.com designates 159.183.92.185 as permitted sender) smtp.mailfrom="bounces+52614290-579c-borgsbeto=gmail.com@em8148.noticing.ra.kroll.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=noticing.ra.kroll.com
+Return-Path: <bounces+52614290-579c-borgsbeto=gmail.com@em8148.noticing.ra.kroll.com>
+Received: from wfbtrcbw.outbound-mail.sendgrid.net (wfbtrcbw.outbound-mail.sendgrid.net. [159.183.92.185])
+        by mx.google.com with ESMTPS id d75a77b69052e-4a72a4d292asi23884371cf.396.2025.06.13.00.26.13
+        for <borgsbeto@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 13 Jun 2025 00:26:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+52614290-579c-borgsbeto=gmail.com@em8148.noticing.ra.kroll.com designates 159.183.92.185 as permitted sender) client-ip=159.183.92.185;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@noticing.ra.kroll.com header.s=s1 header.b=Sh0lTuJr;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b="by0lWIQ/";
+       spf=pass (google.com: domain of bounces+52614290-579c-borgsbeto=gmail.com@em8148.noticing.ra.kroll.com designates 159.183.92.185 as permitted sender) smtp.mailfrom="bounces+52614290-579c-borgsbeto=gmail.com@em8148.noticing.ra.kroll.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=noticing.ra.kroll.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=noticing.ra.kroll.com;
+	h=content-transfer-encoding:content-type:from:mime-version:subject:to:
+	cc:content-type:feedback-id:from:subject:to;
+	s=s1; bh=VNp9qlXhgMyU5n39rOZdQ/D9xa61AyXa/CKrdB6cZsM=;
+	b=Sh0lTuJrCLDuBLscrjt5reC+1j8sm8fEmu7H7WB75dxZLCY9kuo3WCGzFHGfgnzl77r1
+	VUdUNWmb3oRl1w8nwqtiwp5OOa5pWR4YhNluMhNzMpfMqs+kd5d6b8qfbQjhoAgrrK8/Rc
+	8iHqpUSnhokRx/8JVSK/yDWMYHobezx3Hmu9nu+2yUpNcBmM6K2H/08H+PNNoSmXZx0SID
+	kxHJ9k3vYUKNBOlDPMF82d+E4lIepG4T1GYF53fEFJkfmUdKV5Wy5YLmL+m4l0uRqu3cZy
+	+CcYKbvaABocLF/R+jrf8budfnunFScU3UrlqkE+5VsCOzPCMnez4OzUPeMngCmQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-transfer-encoding:content-type:from:mime-version:subject:to:
+	cc:content-type:feedback-id:from:subject:to;
+	s=smtpapi; bh=VNp9qlXhgMyU5n39rOZdQ/D9xa61AyXa/CKrdB6cZsM=;
+	b=by0lWIQ/O6QCBJY+sApqEz+N0j+XdVBuPP4UVHkcYLpfLgiXe+ESEyn1qHor8/gmaxCO
+	YNrb3JGXh/iR6Zb4ENkPAeWfjXYORuyLnt/r7c+yQmIp+g+JIO1Tq4pGTVIxM1AKZ7e+j1
+	zd1/A/gMJ64+B8x08oEa93dVpnPImCKc8=
+Received: by recvd-85cd49b596-25vld with SMTP id recvd-85cd49b596-25vld-1-684BD294-1C
+	2025-06-13 07:26:12.601621855 +0000 UTC m=+744099.187687264
+Received: from NTI2MTQyOTA (unknown)
+	by geopod-ismtpd-39 (SG) with HTTP
+	id 1dOexX0WSyWhN30SuiM1AQ
+	Fri, 13 Jun 2025 07:26:12.590 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Date: Fri, 13 Jun 2025 07:26:12 +0000 (UTC)
+From: 23andmebankruptcynoticing@noticing.ra.Kroll.com
+Mime-Version: 1.0
+Message-ID: <1dOexX0WSyWhN30SuiM1AQ@geopod-ismtpd-39>
+Subject: IMPORTANT INFORMATION REGARDING POTENTIAL CHANGE OF OWNERSHIP OF
+ PERSONAL INFORMATION
+X-SG-EID: 
+ =?us-ascii?Q?u001=2Ep+JIEgMj=2FRsT5KzW2w+s5tKG6Q1FJf2O5AsBGTJx=2FDGzQONfeFsC+wCIN?=
+ =?us-ascii?Q?zUqcxj+=2FR6b50wxamDhixCxk02Ppw=2F0kJNxDWG8?=
+ =?us-ascii?Q?2mVWyHTF+wWxn23rhzQJW6eBe9NAJZXzg0cCi2t?=
+ =?us-ascii?Q?gqXjkqQepjr+ns1UIyizJILG6OaGlKI5R9BHI3=2F?=
+ =?us-ascii?Q?W6X8jdb6MfTCnQT=2FZljj5H6P4ek2nuM6R31txUC?=
+ =?us-ascii?Q?iOJCLY9eTGFqNL34QbmqVXbj7m5eseLT4Dg=2FULc?= =?us-ascii?Q?RID8?=
+X-SG-ID: 
+ =?us-ascii?Q?u001=2ESdBcvi+Evd=2FbQef8eZF3BtMChPl+2=2FvuQeMFb8rSMkY7zR0a5q2MlzePG?=
+ =?us-ascii?Q?YbVLhFKv+GqDhgDIqP3oeUMjtg1Mhk7zFAPgDS1?=
+ =?us-ascii?Q?NT3eRbG7yRw=3D?=
+To: borgsbeto@gmail.com
+X-Entity-ID: u001.SG+O0VuRxYInQZ0LmKekig==
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html data-editor-version=3D"2" class=3D"sg-campaigns" xmlns=3D"http://www.=
+w3.org/1999/xhtml">
+    <head>
+      <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8">
+      <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scal=
+e=3D1, minimum-scale=3D1, maximum-scale=3D1">
+      <!--[if !mso]><!-->
+      <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3DEdge">
+      <!--<![endif]-->
+      <!--[if (gte mso 9)|(IE)]>
+      <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+      </xml>
+      <![endif]-->
+      <!--[if (gte mso 9)|(IE)]>
+  <style type=3D"text/css">
+    body {width: 600px;margin: 0 auto;}
+    table {border-collapse: collapse;}
+    table, td {mso-table-lspace: 0pt;mso-table-rspace: 0pt;}
+    img {-ms-interpolation-mode: bicubic;}
+  </style>
+<![endif]-->
+      <style type=3D"text/css">
+    body, p, div {
+      font-family: arial,helvetica,sans-serif;
+      font-size: 14px;
+    }
+    body {
+      color: #000000;
+    }
+    body a {
+      color: #1188E6;
+      text-decoration: none;
+    }
+    p { margin: 0; padding: 0; }
+    table.wrapper {
+      width:100% !important;
+      table-layout: fixed;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    img.max-width {
+      max-width: 100% !important;
+    }
+    .column.of-2 {
+      width: 50%;
+    }
+    .column.of-3 {
+      width: 33.333%;
+    }
+    .column.of-4 {
+      width: 25%;
+    }
+    ul ul ul ul  {
+      list-style-type: disc !important;
+    }
+    ol ol {
+      list-style-type: lower-roman !important;
+    }
+    ol ol ol {
+      list-style-type: lower-latin !important;
+    }
+    ol ol ol ol {
+      list-style-type: decimal !important;
+    }
+    @media screen and (max-width:480px) {
+      .preheader .rightColumnContent,
+      .footer .rightColumnContent {
+        text-align: left !important;
+      }
+      .preheader .rightColumnContent div,
+      .preheader .rightColumnContent span,
+      .footer .rightColumnContent div,
+      .footer .rightColumnContent span {
+        text-align: left !important;
+      }
+      .preheader .rightColumnContent,
+      .preheader .leftColumnContent {
+        font-size: 80% !important;
+        padding: 5px 0;
+      }
+      table.wrapper-mobile {
+        width: 100% !important;
+        table-layout: fixed;
+      }
+      img.max-width {
+        height: auto !important;
+        max-width: 100% !important;
+      }
+      a.bulletproof-button {
+        display: block !important;
+        width: auto !important;
+        font-size: 80%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      .columns {
+        width: 100% !important;
+      }
+      .column {
+        display: block !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+      .social-icon-column {
+        display: inline-block !important;
+      }
+    }
+  </style>
+      <!--user entered Head Start--><!--End Head user entered-->
+    </head>
+    <body>
+      <center class=3D"wrapper" data-link-color=3D"#1188E6" data-body-style=
+=3D"font-size:14px; font-family:arial,helvetica,sans-serif; color:#000000; =
+background-color:#FFFFFF;">
+        <div class=3D"webkit">
+          <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"=
+100%" class=3D"wrapper" bgcolor=3D"#FFFFFF">
+            <tr>
+              <td valign=3D"top" bgcolor=3D"#FFFFFF" width=3D"100%">
+                <table width=3D"100%" role=3D"content-container" class=3D"o=
+uter" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+                  <tr>
+                    <td width=3D"100%">
+                      <table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0">
+                        <tr>
+                          <td>
+                            <!--[if mso]>
+    <center>
+    <table><tr><td width=3D"600">
+  <![endif]-->
+                                    <table width=3D"100%" cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0" style=3D"width:100%; max-width:600px;" alig=
+n=3D"center">
+                                      <tr>
+                                        <td role=3D"modules-container" styl=
+e=3D"padding:0px 0px 0px 0px; color:#000000; text-align:left;" bgcolor=3D"#=
+FFFFFF" width=3D"100%" align=3D"left"><table class=3D"module preheader preh=
+eader-hide" role=3D"module" data-type=3D"preheader" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"display: none !important;=
+ mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height:=
+ 0; width: 0;">
+    <tr>
+      <td role=3D"module-content">
+        <p></p>
+      </td>
+    </tr>
+  </table><table class=3D"module" role=3D"module" data-type=3D"text" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-la=
+yout: fixed;" data-muid=3D"5a27522f-254c-4d41-acd0-0e44d81322f7" data-mc-mo=
+dule-version=3D"2019-10-22">
+    <tbody>
+      <tr>
+        <td style=3D"padding:18px 0px 18px 0px; line-height:22px; text-alig=
+n:inherit;" height=3D"100%" valign=3D"top" bgcolor=3D"" role=3D"module-cont=
+ent"><div><div style=3D"font-family: inherit; text-align: inherit"><span st=
+yle=3D"font-size: 14px">In re: 23andMe Holding Co., et al.,<br>
+Chapter 11 =E2=80=93 Case No. 25-40976-357 (Jointly Administered)</span></d=
+iv>
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"fon=
+t-size: 14px"><br>
+TO: All Current and Former Customers of 23andMe Holding Co. and its Debtor =
+Subsidiaries (the =E2=80=9CDebtors=E2=80=9D):</span></div>
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"fon=
+t-size: 14px"><br>
+Please find below a link to the following important document, related to th=
+e bankruptcy proceedings of 23andMe Holding Co., et al. Case No. 25-40976-3=
+57, United States Bankruptcy Court for the Eastern District of Missouri, Ea=
+stern Division:</span></div>
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"fon=
+t-size: 14px"><br>
+</span><ul><li><a href=3D"https://u52614290.ct.sendgrid.net/ls/click?upn=3D=
+u001.kjcfxJ77c993aHNM490-2Bl38sUJBlS71ILmJUN791JCUmskn8aAteXBMC0MSurXAJQi8b=
+7btSfaWddAX-2FTIPNHpRl4BBEFQlqJ-2F0D5c5-2FvGQ-3Dn_NP_gGzCSjR1sftoM23Dd4-2BI=
+IklIg6Zy0T6pTT2sQl-2B32li5EcXUPnl1KMC5Zh92TR8o7C1DR22LlvVVbUCLcvZLY4wKfSZlg=
+XuY810twDmcEfVni0ASadTR1nkERFlbz3t0-2Bdlfqmh6Pqd2LfxjM4-2Fs-2FFhdNSsGa58AI0=
+cr2Ndnx2vBrqi54hFMMj2qlkf1ClJVB-2BIFiTPkEbRTkmIe-2BLTlTIlh2bYU9OXWZP6hKwW-2=
+BKS9OgjV0fZEFjFAA5FPjsGE4KoqxMjufbx33sPCH71BR9A-3D-3D"><span style=3D"font-=
+size: 14px"><u><strong>Notice of Potential Change of Ownership of Personal =
+Information</strong></u></span></a></div></li></ul>
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"fon=
+t-size: 14px"><br>
+</span><span style=3D"font-size: 14px"><strong>You are not required to take=
+ any action, and this notice is being sent for informational purposes only.=
+</strong></span></div>
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"fon=
+t-size: 14px"><br>
+</span><span style=3D"font-size: 14px"><strong>If you are a former customer=
+ of the Debtors (and no longer have an account with the Debtors), this noti=
+ce does not apply to you.</strong></span></div>
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"fon=
+t-size: 14px"><br>
+For additional information, and to download all documents filed in the Debt=
+ors=E2=80=99 chapter 11 cases free of charge, please visit </span><a href=
+=3D"https://u52614290.ct.sendgrid.net/ls/click?upn=3Du001.kjcfxJ77c993aHNM4=
+90-2Blwhv4Jb3YXBwSnCjMdQEHoUVJrriAYyOyDmOHIjyNPN5VJRFUFFAWuZgTC-2FKMNQ0JA-3=
+D-3DA33f_gGzCSjR1sftoM23Dd4-2BIIklIg6Zy0T6pTT2sQl-2B32li5EcXUPnl1KMC5Zh92TR=
+8ocDPPjdDRvRNpgxQrAqJxyfypLYzpxpftOftonQ56hvgWxYQLUCZ9Ev-2F1UoesMpYPs-2ByHa=
+90p6RNbM52xzQkXmGfxdxn-2FkNGVH9qta7DB2cbpn9-2FpGNBQPyyvQPxclTPQ-2BssF760Dwy=
+iPptdpfgN1mQ0TeukklEey-2BMy5Nk9wxcSb52YUG0kAYSkzA9wYUQfbRCk7MhvrXVyW6wzc5Qu=
+Ihw-3D-3D"><span style=3D"font-size: 14px"><u><strong>https://restructuring=
+.ra.kroll.com/23andMe</strong></u></span></a><span style=3D"font-size: 14px=
+">.</span></div><div></div></div></td>
+      </tr>
+    </tbody>
+  </table><div data-role=3D"module-unsubscribe" class=3D"module" role=3D"mo=
+dule" data-type=3D"unsubscribe" style=3D"color:#444444; font-size:12px; lin=
+e-height:20px; padding:16px 16px 16px 16px; text-align:Center;" data-muid=
+=3D"4e838cf3-9892-4a6d-94d6-170e474d21e5"><div class=3D"Unsubscribe--addres=
+sLine"><p class=3D"Unsubscribe--senderName" style=3D"font-size:12px; line-h=
+eight:20px;">23andMe Holding Co. Bankruptcy Noticing</p><p style=3D"font-si=
+ze:12px; line-height:20px;"><span class=3D"Unsubscribe--senderAddress">Krol=
+l Restructuring Administration LLC, 1 World Trade Center, 31st Floor</span>=
+, <span class=3D"Unsubscribe--senderCity">New York</span>, <span class=3D"U=
+nsubscribe--senderState">NY</span> <span class=3D"Unsubscribe--senderZip">1=
+0007</span></p></div></div></td>
+                                      </tr>
+                                    </table>
+                                    <!--[if mso]>
+                                  </td>
+                                </tr>
+                              </table>
+                            </center>
+                            <![endif]-->
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </center>
+    <img src=3D"https://u52614290.ct.sendgrid.net/wf/open?upn=3Du001.5-2Biq=
+RSMqdNHDgiTRW8C8VyhBCVBBTG2LqcPimFCiRqMSqAuqdmfBUJRYuuqXa6XRMyb-2BPNeXqEllM=
+QQRDKTL4G6Tu-2BKOGJTPZ2R9IIptU8ZmhASYChpBm9TedCZUZi-2Fkj7iTkjW4NHY80Bj0j3tw=
+ISwtTYWb2t9ptoJ11i3Y2jFZ1Xz48zalZXgQpxGlVb4sJJ5EVY6V-2B9XF1vSvAoG4ibti5zgni=
+0VAePrZfPMdGfsZ-2Bv6Na7E5Z8VhcCas-2FO9Ayu4CGr7SB4Qe4-2BCuuCMbFw-3D-3D" alt=
+=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"height:1px !important;=
+width:1px !important;border-width:0 !important;margin-top:0 !important;marg=
+in-bottom:0 !important;margin-right:0 !important;margin-left:0 !important;p=
+adding-top:0 !important;padding-bottom:0 !important;padding-right:0 !import=
+ant;padding-left:0 !important;"/></body>
+  </html>

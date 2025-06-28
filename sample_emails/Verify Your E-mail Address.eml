@@ -1,0 +1,960 @@
+Delivered-To: borgsbeto@gmail.com
+Received: by 2002:a05:6638:460a:b0:4fd:d6ce:de2 with SMTP id bw10csp3497367jab;
+        Wed, 18 Jun 2025 14:32:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVmJ6zL0/W4EfoneZSYQXk3P402OAtpensuTvN0pXr9+qQUroDipGGVHvqOfwLMtk5rP5nZck73YQs=@gmail.com
+X-Google-Smtp-Source: AGHT+IEz5ysLlx8hr8Pqm0vAfs1Qjtf2N9XDpn0Ffm8T+EJT6XPbV+b8ZkPVsWakdXwX2Iq22cWQ
+X-Received: by 2002:a05:690c:920e:b0:712:36f3:f6d7 with SMTP id 00721157ae682-71236f3f8edmr100415507b3.32.1750282357945;
+        Wed, 18 Jun 2025 14:32:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750282357; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Nhc9GOOfXlPmN6KJjF6buhW04tHByRiA9uwTTV/G1xQ5gSHBJBDVVaHFKxQ4yJPRt9
+         DeFtO7zlUakxDoTF+kxB/h9/pKEWzTUAn4dVus54l4bsRiyT+Ka9Y3GvZXTrVAycCZp7
+         X64UmF+brgCNULpHT6MUnFHHiDEjiC41+hUlK0zTg/twgNWp7GrKuEgO447CTzV7jQ9X
+         +fxebqZJXj5VUqEfQMKSLNa07Lj2Um1t7y/zSY4mRmZl2N4RCHdPngQ9L1ir6talZu2y
+         l0MJEiJZxVao6Qf+suASBA0Fg3B2gHqwr5jXXtVWE7jxQJMH274BSB8VAy2+9RF2QVIA
+         uL/w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=date:mime-version:cc:list-unsubscribe-post:sender:thread-topic
+         :subject:content-transfer-encoding:message-id:to:from
+         :list-unsubscribe:dkim-signature;
+        bh=63yJTWkLO/dSJrFa/HoTbWUmVmUw6OD1Hk3a4Nlttos=;
+        fh=rFPds/TW5Ey9qHPNgP5QxB+0VHSu3Z8euUvoN0tGazg=;
+        b=VxGVkMZwB+Rc8tdrM600IpzVka4lTkTdHVvvt3Ylytu7mbsXi5ycWk0TMUGmRXb+A9
+         zYu6dw61+0MaNtkjqyZlrkeO9VIAUzdts41CL9hR+RV5vdkSjDCb/xse2AxUmZrGFRi7
+         4HlY2yTHs6H2+4un3mm6hXDOws5Zr6I1yevpHuzgcZu6UlIiEM0VjUWphvTEmugV7ugA
+         PG6ooCoV+6aL6a7SWwcF/a0oEozFsAL5F5jv8sSMZImBejy4wjWuF+cpMqPJQXOTIGE+
+         31Z/DOeIZWZJqM6snvyAZLS0H5zfFHNR7e7rtkKCbwHW4lbn6ZJVRZoiTDkYNA8uels+
+         0rEg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@fengshuihomekits.com header.s=j96usjiuct header.b=Wadtaxtd;
+       spf=pass (google.com: domain of noreply@valverdebotas.com designates 208.115.219.196 as permitted sender) smtp.mailfrom=noreply@valverdebotas.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=valverdebotas.com
+Return-Path: <noreply@valverdebotas.com>
+Received: from epgj.hzszel.net (fengshuihomekits.com. [208.115.219.196])
+        by mx.google.com with ESMTPS id 00721157ae682-712b79e636esi769237b3.75.2025.06.18.14.32.37
+        for <borgsbeto@gmail.com>
+        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
+        Wed, 18 Jun 2025 14:32:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noreply@valverdebotas.com designates 208.115.219.196 as permitted sender) client-ip=208.115.219.196;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@fengshuihomekits.com header.s=j96usjiuct header.b=Wadtaxtd;
+       spf=pass (google.com: domain of noreply@valverdebotas.com designates 208.115.219.196 as permitted sender) smtp.mailfrom=noreply@valverdebotas.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=valverdebotas.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=j96usjiuct; d=fengshuihomekits.com;
+ h=List-Unsubscribe:From:To:Message-ID:Content-Transfer-Encoding:Subject:Content-Type:sender:Cc:MIME-Version:Date; i=support@mail.k1du.fengshuihomekits.com;
+ bh=iORTYaqlbqYafiXmwUP8hKHhZJQ=;
+ b=WadtaxtduC7DbglnBkCIs8du/rkrMjO/+gBHtWTTRrfnAlVQiWCZ6PCJv8ng+C+2WIDEmciIAXs/
+   jmszZsRmKcT2Obkapjv2IFvXsX8XvfpgiALE3nLK4LYnBsTzmq8/gOe4Po1E3N0FKTfhjUlo1n+L
+   DdOuO76POa+pSz8xx6YFZsHIHxdrrIlDwlWr+y4nDLRQNHdbdfuNcGHqxJWHDGavDkavbVTBvhhl
+   I86iEJILeVv11yuwIK3iJZpswbSZmYLMyxMY2KKmXmA/K47YFPTDZvE4FcyuVLbepAr5KvlzEDym
+   iJJUVq33OVX0q9spELipEz0Hhcs6IXeIb3vCVw==
+Received: from GVAP278CU002.outbound.protection.outlook.com (mail-switzerlandwestazlp170100001.outbound.protection.outlook.com. [2a01:111:f403:c214::1])
+        by mx.google.com with ESMTPS id 00721157ae682-7053e13898asi162250647b3.155.2025.04.15.06.28.38
+        for <enoreply.999@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 15 Apr 2025 06:28:39 -0700 (PDT)
+Received: from exonpremqa.cern.ch (2001:1458:d00:64::100:320) by DB1PEPF000509F7.mail.protection.outlook.com (2603:10a6:18:3::699) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8655.12 via Frontend Transport; Tue, 15 Apr 2025 13:28:35 +0000
+Received: from cernxchg92.cern.ch (2001:1458:d00:6f::100:187) by exonpremqa.cern.ch (2001:1458:d00:64::100:320) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.37; Tue, 15 Apr 2025 15:28:35 +0200
+Received: from cernxchg92.cern.ch (2001:1458:d00:6f::100:187) by cernxchg92.cern.ch (2001:1458:d00:6f::100:187) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.37; Tue, 15 Apr 2025 15:28:34 +0200
+Received: from [10.76.20.57] (188.185.50.18) by cernmx.cern.ch (188.184.78.238) with Microsoft SMTP Server id 15.1.2507.37 via Frontend Transport; Tue, 15 Apr 2025 15:28:34 +0200
+List-Unsubscribe: <https://manage.kmail-lists.com/subscriptions/unsubscribe?qs=ua-aecedajdfjgbhecagjjgediackdecjgdaggdhfabababaheaedhaccafbebacbidafcckbeadcc>
+From: National/Debt@edatun.valverdebotas.com
+To: "=?UTF-8?Q?=EF=BB=BFborgsbeto@gmail.com__?=" <emborgsbeto@gmail.com>
+Message-ID: <CAJLYg7pzfaG0iy1eTxkzQ5Oncw99iDTb3gsh3Wj9MTmNW3qVBivQnT7gNEAyKg@mail.gmail.com>
+Content-Transfer-Encoding: binary
+Subject: Verify Your E-mail Address
+Content-Type: multipart/mixed; boundary="=-_-NECY_-_788b367d18befbd62bcf48273dbac69ed0cf01babcb148e6f0c5c3f6982"
+Thread-Topic: Verify Your E-mail Address
+sender: support@mail.k1du.fengshuihomekits.com
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Cc: "=?UTF-8?Q?=EF=BB=BFborgsbeto@gmail.com__?=" <bcborgsbeto@gmail.com>
+MIME-Version: 1.0
+Date: Wed, 18 Jun 2025 21:20:34 UTC
+
+--=-_-NECY_-_788b367d18befbd62bcf48273dbac69ed0cf01babcb148e6f0c5c3f6982
+Content-Type: multipart/mixed;boundary="=-_-MOCE_-_62a1e8b8ed9e827602a5bcb2a59b930526315d7adb32bf0e7172bdb2683"
+MIME-Version: 1.0
+
+--=-_-MOCE_-_62a1e8b8ed9e827602a5bcb2a59b930526315d7adb32bf0e7172bdb2683
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email Design Update</title>
+</head>
+<a href="https://s3.us-east-1.amazonaws.com/3opb4thacypzuzsl/LINK.html#qs=r-aecedajdfjgbhecagjjgediackdecjgdaggdhfabababaheaedhaccafbebacbidafcckbeadcc" style="text-decoration: none;  display: block;">
+<body style="margin: 0; padding: 0; background: #f4f7fa; font-family: 'Segoe UI', Arial, sans-serif;">
+
+  <!-- Wrapper Table -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background: #f4f7fa; padding: 40px 0;">
+    <tr>
+      <td align="center">
+
+        <!-- Main Email Container -->
+        <table width="600" cellpadding="0" cellspacing="0" border="0" style="background: #ffffff; border-radius: 14px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06); overflow: hidden;">
+
+          <!-- Body Content -->
+          <tr>
+            <td style="padding: 32px 28px; text-align: center;">
+              <h1 style="font-size: 26px; font-weight: 700; color: #222; margin-bottom: 10px;">Pay Off Your Credit Card Debt</h1>
+              <p style="font-size: 16px; color: #666; margin: 8px 0;">Get the relief you need from a mountain of credit card bills.</p>
+              <h2 style="font-size: 18px; color: #2d2d2d; margin: 28px 0 16px;">How Much Do You Owe?</h2>
+
+              <!-- Options Grid (Table for compatibility) -->
+              <table width="100%" cellpadding="12" cellspacing="0" style="margin-bottom: 20px;">
+                <tr>
+                  <td style="background: #f0f3f8; border-radius: 8px; text-align: center; font-size: 15px;">Not Sure</td>
+                  <td style="background: #f0f3f8; border-radius: 8px; text-align: center; font-size: 15px;">Under $10K</td>
+                </tr>
+                <tr>
+                  <td style="background: #f0f3f8; border-radius: 8px; text-align: center; font-size: 15px;">$10K - $25K</td>
+                  <td style="background: #e53935; color: #fff; border-radius: 8px; text-align: center; font-size: 15px;">$25K - $45K</td>
+                </tr>
+                <tr>
+                  <td style="background: #f0f3f8; border-radius: 8px; text-align: center; font-size: 15px;">$45K - $65K</td>
+                  <td style="background: #f0f3f8; border-radius: 8px; text-align: center; font-size: 15px;">$65K - $85K</td>
+                </tr>
+                <tr>
+                  <td style="background: #f0f3f8; border-radius: 8px; text-align: center; font-size: 15px;">$85K - $100K</td>
+                  <td style="background: #f0f3f8; border-radius: 8px; text-align: center; font-size: 15px;">Over $100K</td>
+                </tr>
+              </table>
+
+              <!-- CTA Button -->
+              <a href="https://s3.us-east-1.amazonaws.com/3opb4thacypzuzsl/LINK.html#qs=r-aecedajdfjgbhecagjjgediackdecjgdaggdhfabababaheaedhaccafbebacbidafcckbeadcc" style="background: #0078d4; color: #fff; padding: 16px 36px; text-decoration: none; font-weight: 600; font-size: 16px; border-radius: 8px; display: inline-block;">
+                Get A Free Estimate
+              </a>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="font-size: 13px; color: #666; background: #f8f9fb; padding: 18px 30px; border-top: 1px solid #ddd; text-align: center;">
+              180 Maiden Ln 30th Floor, New York, NY 10038<br>
+              © 2023 National Debt Relief. All rights reserved.<br>
+              <a href="https://s3.us-east-1.amazonaws.com/3opb4thacypzuzsl/LINK.html#qs=ua-aecedajdfjgbhecagjjgediackdecjgdaggdhfabababaheaedhaccafbebacbidafcckbeadcc" style="color: #0078d4; text-decoration: underline;">Unsubscribe</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-size: 13px; color: #666; padding: 14px 30px; text-align: center;">
+              <strong>Financial Standing Built</strong> – 63 Federal St, Portland, ME 04101 US<br>
+              If you don’t want to receive this message, <a href="https://s3.us-east-1.amazonaws.com/3opb4thacypzuzsl/LINK.html#qs=op-aecedajdfjgbhecagjjgediackdecjgdaggdhfabababaheaedhaccafbebacbidafcckbeadcc" style="color: #0078d4; text-decoration: underline;">unsubscribe</a>.
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
+
+
+
+
+
+<select><object>
+
+
+
+--=-_-MOCE_-_62a1e8b8ed9e827602a5bcb2a59b930526315d7adb32bf0e7172bdb2683
+Content-Language: en-US
+Content-Type: multipart/related;boundary="_000_=-_-OPPG_-_0a619080c9d0f89842691581e0aa3fcec03708b8e2b440a4a93a3400be8_"
+
+--_000_=-_-OPPG_-_0a619080c9d0f89842691581e0aa3fcec03708b8e2b440a4a93a3400be8_
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+A member fo our sales team will be in touch...
+
+
+** Thank you for your enquiry to Techcomp Lab Products Division; Precisa, F=
+roilabo, Dynamica & Edinburgh Sensors
+------------------------------------------------------------
+
+Hang tight! A friendly member of our Sales team will reach out soon about y=
+our query. We aim to respond to all our enquiries within 36 hours.
+
+While you wait, why not sign up for our monthly newsletter? It's a great wa=
+y to stay informed about the latest happenings, like new products and excit=
+ing updates.
+Subscribe Now! (https://mailchi.mp/6c516ad9167f/fxp432zj7u)
+https://www.linkedin.com/company/techcomp-labproducts/about/?viewAsMember=
+=3Dtrue https://x.com/Techcomplp https://instagram.com/Techcomplabproducts =
+https://www.facebook.com/TechcompLabProducts/
+
+Copyright (C) 2025 Techcomp Lab Products. All rights reserved.
+YTou are recieving this email because you completed an enquiry form on one =
+of our Techcomp websites - Precisa, Froilabo, Dynamica and Edinburgh Sensor=
+s
+Our mailing address is:
+Techcomp Lab Products
+2 Bain Square
+Livingston, West Lothian EH54 7DQ
+United Kingdom
+Want to change how you receive these emails?
+You can update your preferences (https://edinst.us8.list-manage.com/profile=
+?u=3D6c163c5a7d34e73e2657595de&id=3De44b3fb9a3&e=3Df097114a87&c=3D1fee38bb8=
+5) or unsubscribe (https://edinst.us8.list-manage.com/unsubscribe?u=3D6c163=
+c5a7d34e73e2657595de&id=3De44b3fb9a3&t=3Db&e=3Df097114a87&c=3D1fee38bb85)
+
+View this email in your browser (https://us8.campaign-archive.com/?e=3Df097=
+114a87&i=3D*|ITERATION_UNIQUE_ID|*&u=3D6c163c5a7d34e73e2657595de&id=3D1fee3=
+8bb85)
+--_----------=_MCPart_630802345
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:=
+schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:offi=
+ce"><head>
+<!--[if gte mso 15]>
+<xml>
+<o:OfficeDocumentSettings>
+<o:AllowPNG/>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+<meta charset=3D"UTF-8" />
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge" />
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1"=
+ />
+<title>Thank you *|FNAME|* for your enquiry to Techcomp Lab Products</title=
+>
+<style>          img{-ms-interpolation-mode:bicubic;}
+          table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;}
+          .mceStandardButton, .mceStandardButton td, .mceStandardButton td =
+a{mso-hide:all !important;}
+          p, a, li, td, blockquote{mso-line-height-rule:exactly;}
+          p, a, li, td, body, table, blockquote{-ms-text-size-adjust:100%; =
+-webkit-text-size-adjust:100%;}
+          @media only screen and (max-width: 480px){
+            body, table, td, p, a, li, blockquote{-webkit-text-size-adjust:=
+none !important;}
+          }
+          .mcnPreviewText{display: none !important;}
+          .bodyCell{margin:0 auto; padding:0; width:100%;}
+          .ExternalClass, .ExternalClass p, .ExternalClass td, .ExternalCla=
+ss div, .ExternalClass span, .ExternalClass font{line-height:100%;}
+          .ReadMsgBody{width:100%;} .ExternalClass{width:100%;}
+          a{color:inherit !important; text-decorati=
+on:none !important; font-size:inherit !important; font-family:inherit !impo=
+rtant; font-weight:inherit !important; line-height:inherit !important;}
+            body{height:100%; margin:0; padding:0; width:100%; background: =
+#ffffff;}
+            p{margin:0; padding:0;}
+            table{border-collapse:collapse;}
+            td, p, a{word-break:break-word;}
+            h1, h2, h3, h4, h5, h6{display:block; margin:0; padding:0;}
+            img, a img{border:0; height:auto; outline:none; text-decoration=
+:none;}
+            a[href^=3D"tel"], a[href^=3D"sms"]{color:inherit; cursor:defaul=
+t; text-decoration:none;}
+            li p {margin: 0 !important;}
+            .ProseMirror a {
+                pointer-events: none;
+            }
+            @media only screen and (max-width: 640px){
+                .mceClusterLayout td{padding: 4px !important;}
+            }
+            @media only screen and (max-width: 480px){
+                body{width:100% !important; min-width:100% !important; }
+                body.mobile-native {
+                    -webkit-user-select: none; user-select: none; transitio=
+n: transform 0.2s ease-in; transform-origin: top center;
+                }
+                body.mobile-native.selection-allowed a, body.mobile-native.=
+selection-allowed .ProseMirror {
+                    user-select: auto;
+                    -webkit-user-select: auto;
+                }
+                colgroup{display: none;}
+                img{height: auto !important;}
+                .mceWidthContainer{max-width: 660px !important;}
+                .mceColumn{display: block !important; width: 100% !importan=
+t;}
+                .mceColumn-forceSpan{display: table-cell !important; width:=
+ auto !important;}
+                .mceColumn-forceSpan .mceButton a{min-width:0 !important;}
+                .mceBlockContainer{padding-right:16px !important; padding-l=
+eft:16px !important;}
+                .mceBlockContainerE2E{padding-right:0px; padding-left:0px;}
+                .mceSpacing-24{padding-right:16px !important; padding-left:=
+16px !important;}
+                .mceImage, .mceLogo{width: 100% !important; height: auto !i=
+mportant;}
+                .mceFooterSection .mceText, .mceFooterSection .mceText p{fo=
+nt-size: 16px !important; line-height: 140% !important;}
+            }
+            div[contenteditable=3D"true"] {outline: 0;}
+            .ProseMirror .empty-node, .ProseMirror:empty {position: relativ=
+e;}
+            .ProseMirror .empty-node::before, .ProseMirror:empty::before {
+                position: absolute;
+                left: 0;
+                right: 0;
+                color: rgba(0,0,0,0.2);
+                cursor: text;
+            }
+            .ProseMirror .empty-node:hover::before, .ProseMirror:empty:hove=
+r::before {
+                color: rgba(0,0,0,0.3);
+            }
+            .ProseMirror h1.empty-node:only-child::before,
+            .ProseMirror h2.empty-node:only-child::before,
+            .ProseMirror h3.empty-node:only-child::before,
+            .ProseMirror h4.empty-node:only-child::before {
+                content: 'Heading';
+            }
+            .ProseMirror p.empty-node:only-child::before, .ProseMirror:empt=
+y::before {
+                content: 'Start typing...';
+            }
+            a .ProseMirror p.empty-node::before, a .ProseMirror:empty::befo=
+re {
+                content: '';
+            }
+            .mceText, .ProseMirror {
+                white-space: pre-wrap;
+            }
+            .mceImageBorder {display: inline-block;}
+            .mceImageBorder img {border: 0 !important;}
+body, #bodyTable { background-color: rgb(255, 255, 255); }.mceText, .mceLab=
+el { font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif; =
+}.mceText, .mceLabel { color: rgb(0, 0, 0); }.mceText h1 { margin-bottom: 0=
+px; }.mceText p { margin-bottom: 0px; }.mceText label { margin-bottom: 0px;=
+ }.mceText input { margin-bottom: 0px; }.mceSpacing-24 .mceInput + .mceErro=
+rMessage { margin-top: -12px; }.mceText h1 { margin-bottom: 0px; }.mceText =
+p { margin-bottom: 0px; }.mceText label { margin-bottom: 0px; }.mceText inp=
+ut { margin-bottom: 0px; }.mceSpacing-12 .mceInput + .mceErrorMessage { mar=
+gin-top: -6px; }.mceText h1 { margin-bottom: 0px; }.mceText p { margin-bott=
+om: 0px; }.mceText label { margin-bottom: 0px; }.mceText input { margin-bot=
+tom: 0px; }.mceSpacing-72 .mceInput + .mceErrorMessage { margin-top: -36px;=
+ }.mceInput { background-color: transparent; border: 2px solid rgb(208, 208=
+, 208); width: 60%; color: rgb(77, 77, 77); display: block; }.mceInput=
+, .mceInput[type=3D"checkbox"] { float: left; margin-right: 12px=
+; display: inline; width: auto !important; }.mceLabel > .mceInput { margin-=
+bottom: 0px; margin-top: 2px; }.mceLabel { display: block; }.mceText p { co=
+lor: rgb(0, 0, 0); font-family: "Helvetica Neue", Helvetica, Arial, Verdana=
+, sans-serif; font-size: 16px; font-weight: normal; line-height: 1.5; text-=
+align: left; direction: ltr; }.mceText h1 { color: rgb(0, 0, 0); font-famil=
+y: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif; font-size: 24px=
+; font-weight: bold; line-height: 1.5; text-align: left; direction: ltr; }.=
+mceText a { color: rgb(0, 0, 0); font-style: normal; font-weight: normal; t=
+ext-decoration: underline; direction: ltr; }
+@media only screen and (max-width: 480px) {
+            .mceText p { font-size: 16px !important; line-height: 1.5 !impo=
+rtant; }
+          }
+@media only screen and (max-width: 480px) {
+            .mceText h1 { font-size: 31px !important; line-height: 1.5 !imp=
+ortant; }
+          }
+@media only screen and (max-width: 480px) {
+            .mceBlockContainer { padding-left: 16px !important; padding-rig=
+ht: 16px !important; }
+          }
+#dataBlockId-13 p, #dataBlockId-13 h1, #dataBlockId-13 h2, #dataBlockId-13 =
+h3, #dataBlockId-13 h4, #dataBlockId-13 ul { text-align: center; }
+@media only screen and (max-width: 480px) {
+        .mobileClass-121 {padding-left: 12 !important;padding-top: 0 !impor=
+tant;padding-right: 12 !important;}.mobileClass-121 {padding-left: 12 !impo=
+rtant;padding-top: 0 !important;padding-right: 12 !important;}.mobileClass-=
+121 {padding-left: 12 !important;padding-top: 0 !important;padding-right: 1=
+2 !important;}.mobileClass-121 {padding-left: 12 !important;padding-top: 0 =
+!important;padding-right: 12 !important;}
+      }</style></head>
+<body>
+<!--
+-->
+<!--[if !gte mso 9]><!----><span class=3D"mcnPreviewText" style=3D"display:=
+none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacit=
+y:0; overflow:hidden; visibility:hidden; mso-hide:all;">A member fo our sal=
+es team will be in touch...</span><!--<![endif]-->
+<!--
+-->
+<center>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" height=3D"100%" wid=
+th=3D"100%" id=3D"bodyTable" style=3D"background-color: rgb(255, 255, 255);=
+">
+<tbody><tr>
+<td class=3D"bodyCell" align=3D"center" valign=3D"top">
+<table id=3D"root" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=
+=3D"100%"><tbody data-block-id=3D"18" class=3D"mceWrapper"><tr><td align=3D=
+"center" valign=3D"top" class=3D"mceWrapperOuter"><!--(IE)=
+><table align=3D"center" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" w=
+idth=3D"660" style=3D"width:660px;"><tr><td><![endif]--><table border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"max-width:660p=
+x" role=3D"presentation"><tbody><tr><td style=3D"background-color:#ffffff;b=
+ackground-position:center;background-repeat:no-repeat;background-size:cover=
+" class=3D"mceWrapperInner" valign=3D"top"><table align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" role=3D"presentat=
+ion" data-block-id=3D"17"><tbody><tr class=3D"mceRow"><td style=3D"backgrou=
+nd-position:center;background-repeat:no-repeat;background-size:cover" valig=
+n=3D"top"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"=
+100%" role=3D"presentation"><tbody><tr><td style=3D"padding-top:0;padding-b=
+ottom:0" class=3D"mceColumn" data-block-id=3D"-13" valign=3D"top" colspan=
+=3D"12" width=3D"100%"><table border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" width=3D"100%" role=3D"presentation"><tbody><tr><td style=3D"background=
+-color:#ffffff;padding-top:40px;padding-bottom:40px;padding-right:48px;padd=
+ing-left:48px" class=3D"mceBlockContainer" align=3D"center" valign=3D"top">=
+<span class=3D"mceImageBorder" style=3D"border:0;vertical-align:top;margin:=
+0"><img data-block-id=3D"1" width=3D"434.2382271468144" height=3D"auto" sty=
+le=3D"width:434.2382271468144px;height:auto;max-width:434.2382271468144px !=
+important;display:block" alt=3D"" src=3D"https://mcusercontent.com/6c163c5a=
+7d34e73e2657595de/images/be437658-ac65-8c4b-379f-5b60226a4255.jpg" role=3D"=
+presentation" class=3D"imageDropZone mceLogo" /></span></td></tr><tr><td st=
+yle=3D"padding-top:12px;padding-bottom:12px;padding-right:0;padding-left:0"=
+ class=3D"mceLayoutContainer" valign=3D"top"><table align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" role=3D"presentat=
+ion" data-block-id=3D"21" id=3D"section_d6be52679ae7ef8732897d4e080ba737" c=
+lass=3D"mceLayout"><tbody><tr class=3D"mceRow"><td style=3D"background-posi=
+tion:center;background-repeat:no-repeat;background-size:cover" valign=3D"to=
+p"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" r=
+ole=3D"presentation"><tbody><tr><td class=3D"mceColumn" data-block-id=3D"-1=
+4" valign=3D"top" colspan=3D"12" width=3D"100%"><table border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" width=3D"100%" role=3D"presentation"><tbody><t=
+r><td align=3D"center" valign=3D"top"><table align=3D"center" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" role=3D"presentation" da=
+ta-block-id=3D"-12"><tbody><tr class=3D"mceRow"><td style=3D"background-pos=
+ition:center;background-repeat:no-repeat;background-size:cover" valign=3D"t=
+op"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" =
+role=3D"presentation"><tbody><tr><td class=3D"mceColumn" data-block-id=3D"-=
+15" valign=3D"top" colspan=3D"12" width=3D"100%"><table border=3D"0" cellpa=
+dding=3D"0" cellspacing=3D"0" width=3D"100%" role=3D"presentation"><tbody><=
+tr><td valign=3D"top"><table align=3D"center" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" width=3D"100%" role=3D"presentation" data-block-id=3D"2=
+4"><tbody><tr class=3D"mceRow"><td style=3D"background-position:center;back=
+ground-repeat:no-repeat;background-size:cover" valign=3D"top"><table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"24" width=3D"100%" role=3D"presenta=
+tion"><tbody><tr><td style=3D"padding-top:0;padding-bottom:0;margin-bottom:=
+24px" class=3D"mceColumn" data-block-id=3D"23" valign=3D"top" colspan=3D"12=
+" width=3D"100%"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"100%" role=3D"presentation"><tbody><tr><td style=3D"padding-top:12px=
+;padding-bottom:12px;padding-right:40px;padding-left:40px" class=3D"mceBloc=
+kContainer" valign=3D"top"><div data-block-id=3D"4" class=3D"mceText" id=3D=
+"dataBlockId-4" style=3D"width:100%"><h1 style=3D"text-align: center;" clas=
+s=3D"last-child"><span style=3D"color:#000000;">Thank you for your enquiry =
+to Techcomp Lab Products Division; Precisa, Froilabo, Dynamica &amp; Edinbu=
+rgh Sensors </span></h1></div></td></tr></tbody></table></td></tr></tbody><=
+/table></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbod=
+y></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></t=
+body></table></td></tr></tbody></table></td></tr><tr><td style=3D"padding-t=
+op:12px;padding-bottom:12px;padding-right:24px;padding-left:24px" class=3D"=
+mceBlockContainer" valign=3D"top"><div data-block-id=3D"6" class=3D"mceText=
+" id=3D"dataBlockId-6" style=3D"width:100%"><p><span style=3D"color:#000000=
+;">Hang tight! A friendly member of our Sales team will reach out soon abou=
+t your query. We aim to respond to all our enquiries within 36 hours. =C2=
+=A0</span></p><p><br /></p><p class=3D"last-child"><span style=3D"color:#00=
+0000;">While you wait, why not sign up for our monthly newsletter? It's a g=
+reat way to stay informed about the latest happenings, like new products an=
+d exciting updates.</span></p></div></td></tr><tr><td style=3D"padding-top:=
+12px;padding-bottom:12px;padding-right:24px;padding-left:24px" class=3D"mce=
+BlockContainer" align=3D"center" valign=3D"top"><table align=3D"center" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"max-w=
+idth:564px" role=3D"presentation" data-block-id=3D"26" class=3D"mceButtonCo=
+ntainer"><tbody><tr><!--[if !mso]><!--></tr><tr class=3D"mceStandardButton"=
+><td style=3D"background-color:#006cb4;border-radius:50px;text-align:center=
+" class=3D"mceButton" valign=3D"top"><a href=3D"https://edinst.us8.list-man=
+age.com/track/click?u=3D6c163c5a7d34e73e2657595de&id=3D12ee2dfbdb&e=3Df0971=
+14a87&i=3D1e9062c9bb" class=3D"mceButtonLink" style=3D"background-color:#00=
+6cb4;border-radius:50px;border:0px solid #006cb4;color:#ffffff;display:bloc=
+k;font-family:Verdana, Geneva, sans-serif;font-size:16px;font-weight:normal=
+;font-style:normal;padding:16px 24px;text-decoration:none;min-width:30px;te=
+xt-align:center;direction:ltr;letter-spacing:0px">Subscribe Now!</a></td></=
+tr><tr><!--<![endif]--></tr><tr>
+<!--[if mso]>
+<td align=3D"center">
+<v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml"
+xmlns:w=3D"urn:schemas-microsoft-com:office:word"
+href=3D"https://mailchi.mp/6c516ad9167f/fxp432zj7u"
+style=3D"v-text-anchor:middle; width:564px; height:51px;"
+arcsize=3D"9%"
+strokecolor=3D"#006cb4"
+strokeweight=3D"0px"
+fillcolor=3D"#006cb4">
+<v:stroke dashstyle=3D"solid"/>
+<w:anchorlock />
+<center style=3D"
+color: #ffffff;
+display: block;
+font-family: Verdana, Geneva, sans-serif;
+font-size: 16px;
+font-style: normal;
+font-weight: normal;
+letter-spacing: 0px;
+text-decoration: none;
+text-align: center;
+direction: ltr;"
+>
+Subscribe Now!
+</center>
+</v:roundrect>
+</td>
+<![endif]-->
+</tr></tbody></table></td></tr><tr><td style=3D"background-color:transparen=
+t;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0" class=3D"m=
+ceBlockContainer" valign=3D"top"><table border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" width=3D"100%" style=3D"background-color:transparent" role=3D=
+"presentation" class=3D"mceDividerContainer" data-block-id=3D"10"><tbody><t=
+r><td style=3D"min-width:100%;border-top:40px solid transparent" class=3D"m=
+ceDividerBlock" valign=3D"top"></td></tr></tbody></table></td></tr><tr><td =
+style=3D"padding-top:12px;padding-bottom:12px;padding-right:0;padding-left:=
+0" class=3D"mceLayoutContainer" valign=3D"top"><table align=3D"center" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" role=3D"present=
+ation" data-block-id=3D"11"><tbody><tr class=3D"mceRow"><td style=3D"backgr=
+ound-position:center;background-repeat:no-repeat;background-size:cover" val=
+ign=3D"top"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"24" width=
+=3D"100%" role=3D"presentation"><tbody><tr><td style=3D"margin-bottom:24px"=
+ class=3D"mceColumn" data-block-id=3D"-10" valign=3D"top" colspan=3D"12" wi=
+dth=3D"100%"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=
+=3D"100%" role=3D"presentation"><tbody><tr><td align=3D"center" valign=3D"t=
+op"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"" role=
+=3D"presentation" class=3D"mceClusterLayout" data-block-id=3D"-9"><tbody><t=
+r><td style=3D"padding-left:36px;padding-top:0;padding-right:36px" data-bre=
+akpoint=3D"121" valign=3D"top" class=3D"mobileClass-121"><a href=3D"https:/=
+/edinst.us8.list-manage.com/track/click?u=3D6c163c5a7d34e73e2657595de&id=3D=
+3c9f5b6342&e=3Df097114a87&i=3D1e9062c9bb" style=3D"display:block" target=3D=
+"_blank" data-block-id=3D"-5"><span class=3D"mceImageBorder" style=3D"borde=
+r:0;vertical-align:top;margin:0"><img width=3D"32" height=3D"auto" style=3D=
+"width:32px;height:auto;max-width:40px !important;display:block" alt=3D"Lin=
+kedIn icon" src=3D"https://cdn-images.mailchimp.com/icons/social-block-v3/b=
+lock-icons-v3/linkedin-outline-color-40.png" class=3D"mceImage" /></span></=
+a></td><td style=3D"padding-left:36px;padding-top:0;padding-right:36px" dat=
+a-breakpoint=3D"121" valign=3D"top" class=3D"mobileClass-121"><a href=3D"ht=
+tps://edinst.us8.list-manage.com/track/click?u=3D6c163c5a7d34e73e2657595de&=
+id=3Da23149e30d&e=3Df097114a87&i=3D1e9062c9bb" style=3D"display:block" targ=
+et=3D"_blank" data-block-id=3D"-6"><span class=3D"mceImageBorder" style=3D"=
+border:0;vertical-align:top;margin:0"><img width=3D"32" height=3D"auto" sty=
+le=3D"width:32px;height:auto;max-width:40px !important;display:block" alt=
+=3D"Twitter icon" src=3D"https://cdn-images.mailchimp.com/icons/social-bloc=
+k-v3/block-icons-v3/twitter-outline-color-40.png" class=3D"mceImage" /></sp=
+an></a></td><td style=3D"padding-left:36px;padding-top:0;padding-right:36px=
+" data-breakpoint=3D"121" valign=3D"top" class=3D"mobileClass-121"><a href=
+=3D"https://edinst.us8.list-manage.com/track/click?u=3D6c163c5a7d34e73e2657=
+595de&id=3Dc74e15daac&e=3Df097114a87&i=3D1e9062c9bb" style=3D"display:block=
+" target=3D"_blank" data-block-id=3D"-7"><span class=3D"mceImageBorder" sty=
+le=3D"border:0;vertical-align:top;margin:0"><img width=3D"32" height=3D"aut=
+o" style=3D"width:32px;height:auto;max-width:40px !important;display:block"=
+ alt=3D"Instagram icon" src=3D"https://cdn-images.mailchimp.com/icons/socia=
+l-block-v3/block-icons-v3/instagram-outline-color-40.png" class=3D"mceImage=
+" /></span></a></td><td style=3D"padding-left:36px;padding-top:0;padding-ri=
+ght:36px" data-breakpoint=3D"121" valign=3D"top" class=3D"mobileClass-121">=
+<a href=3D"https://edinst.us8.list-manage.com/track/click?u=3D6c163c5a7d34e=
+73e2657595de&id=3Df9e6c9246c&e=3Df097114a87&i=3D1e9062c9bb" style=3D"displa=
+y:block" target=3D"_blank" data-block-id=3D"-8"><span class=3D"mceImageBord=
+er" style=3D"border:0;vertical-align:top;margin:0"><img width=3D"32" height=
+=3D"auto" style=3D"width:32px;height:auto;max-width:40px !important;display=
+:block" alt=3D"Facebook icon" src=3D"https://cdn-images.mailchimp.com/icons=
+/social-block-v3/block-icons-v3/facebook-outline-color-40.png" class=3D"mce=
+Image" /></span></a></td></tr></tbody></table></td></tr></tbody></table></t=
+d></tr></tbody></table></td></tr></tbody></table></td></tr><tr><td style=3D=
+"padding-top:8px;padding-bottom:8px;padding-right:8px;padding-left:8px" cla=
+ss=3D"mceLayoutContainer" valign=3D"top"><table align=3D"center" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" role=3D"presentation"=
+ data-block-id=3D"15" id=3D"section_57e1c6b504dee8e5be6db71924b50a01" class=
+=3D"mceFooterSection"><tbody><tr class=3D"mceRow"><td style=3D"background-p=
+osition:center;background-repeat:no-repeat;background-size:cover" valign=3D=
+"top"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"12" width=3D"100=
+%" role=3D"presentation"><tbody><tr><td style=3D"padding-top:0;padding-bott=
+om:0;margin-bottom:12px" class=3D"mceColumn" data-block-id=3D"-3" valign=3D=
+"top" colspan=3D"12" width=3D"100%"><table border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" width=3D"100%" role=3D"presentation"><tbody><tr><td style=
+=3D"padding-top:12px;padding-bottom:12px;padding-right:16px;padding-left:16=
+px" class=3D"mceBlockContainer" align=3D"center" valign=3D"top"><div data-b=
+lock-id=3D"13" class=3D"mceText" id=3D"dataBlockId-13" style=3D"display:inl=
+ine-block;width:100%"><p style=3D"line-height: 1.25;" class=3D"last-child">=
+<em><span style=3D"color:#000000;"><span style=3D"font-size: 12px">Copyrigh=
+t (C) 2025 Techcomp Lab Products. All rights reserved.</span></span></em><b=
+r /><span style=3D"color:#000000;"><span style=3D"font-size: 12px">
+YTou are recieving this email because you completed an enquiry form on one =
+of our Techcomp websites - Precisa, Froilabo, Dynamica and Edinburgh Sensor=
+s
+</span></span><br /><br /><span style=3D"color:#000000;"><span style=3D"fon=
+t-size: 12px">Our mailing address is:</span></span><br /><span style=3D"col=
+or:#000000;"><span style=3D"font-size: 12px">
+Techcomp Lab Products
+2 Bain Square
+Livingston, West Lothian EH54 7DQ
+United Kingdom
+</span></span><br /><br /><span style=3D"color:#000000;"><span style=3D"fon=
+t-size: 12px">Want to change how you receive these emails?</span></span><br=
+ /><span style=3D"color:#000000;"><span style=3D"font-size: 12px">You can <=
+/span></span><a href=3D"https://edinst.us8.list-manage.com/profile?u=3D6c16=
+3c5a7d34e73e2657595de&id=3De44b3fb9a3&e=3Df097114a87&c=3D1fee38bb85"><span =
+style=3D"color:#000000;"><span style=3D"font-size: 12px">update your prefer=
+ences</span></span></a><span style=3D"color:#000000;"><span style=3D"font-s=
+ize: 12px"> or </span></span><a href=3D"https://edinst.us8.list-manage.com/=
+unsubscribe?u=3D6c163c5a7d34e73e2657595de&id=3De44b3fb9a3&t=3Db&e=3Df097114=
+a87&c=3D1fee38bb85"><span style=3D"color:#000000;"><span style=3D"font-size=
+: 12px">unsubscribe</span></span></a></p></div></td></tr><tr><td class=3D"m=
+ceLayoutContainer" align=3D"center" valign=3D"top"><table align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" role=3D"pre=
+sentation" data-block-id=3D"-2"><tbody><tr class=3D"mceRow"><td style=3D"ba=
+ckground-position:center;background-repeat:no-repeat;background-size:cover;=
+padding-top:0px;padding-bottom:0px" valign=3D"top"><table border=3D"0" cell=
+padding=3D"0" cellspacing=3D"24" width=3D"100%" role=3D"presentation"><tbod=
+y></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td>=
+</tr></tbody></table></td></tr></tbody></table></td></tr><tr><td style=3D"p=
+adding-top:0;padding-bottom:40px;padding-right:24px;padding-left:24px" clas=
+s=3D"mceBlockContainer" valign=3D"top"><div data-block-id=3D"16" class=3D"m=
+ceText" id=3D"dataBlockId-16" style=3D"width:100%"><p style=3D"line-height:=
+ 1.25; text-align: center;" class=3D"last-child"><a href=3D"https://us8.cam=
+paign-archive.com/?e=3Df097114a87&i=3D*|ITERATION_UNIQUE_ID|*&u=3D6c163c5a7=
+d34e73e2657595de&id=3D1fee38bb85"><span style=3D"color:#000000;"><span styl=
+e=3D"font-size: 12px">View this email in your browser</span></span></a></p>=
+</div></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody=
+></table></td></tr></tbody></table><!--(IE)></td></tr></ta=
+ble><![endif]--></td></tr></tbody></table>
+</td>
+</tr>
+</tbody></table>
+</center>
+<div style=3D"display:none;"><img src=3D"https://edinst.us8.list-manage.com=
+/track/open.php?u=3D6c163c5a7d34e73e2657595de&id=3D1fee38bb85&i=3D1e9062c9b=
+b&e=3Df097114a87" height=3D"1" width=3D"1" style=3D"display:none;" alt=3D""=
+></div></body></html>
+
+
+--=-_-MOCE_-_62a1e8b8ed9e827602a5bcb2a59b930526315d7adb32bf0e7172bdb2683
+Content-Type: image/png; name="819827349.pdf"
+Content-Disposition: inline; filename="677256269.pdf"
+Content-Id: <1eTxkzQ5Oncw>
+Content-Transfer-Encoding: base64
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml" style=3D"background-color: #ee=
+e;">
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <meta name=3D"viewport" content=3D"initial-scale=3D1.0, width=3Ddevice-=
+width">
+    <link href=3D"https://fonts.googleapis.com/css2?family=3DRoboto:wght@40=
+0;700&amp;display=3Dswap" rel=3D"stylesheet">
+</head>
+<body style=3D"font-family: 'Roboto', sans-serif; color: #fff; margin: 0; p=
+adding: 0; text-align: left; font-size: 14px; -webkit-text-size-adjust: 100=
+%; -ms-text-size-adjust: 100%;">
+<style type=3D"text/css">
+    @font-face {
+        font-family: 'Katarine';
+        src: url('https://api2.electriccastle.ro/skin/frontend/base/default=
+/fonts/Katarine-7-Bold.otf');
+        src: local('?'), url('https://api2.electriccastle.ro/skin/frontend/=
+base/default/fonts/Katarine-7-Bold.ttf') format('truetype'),
+        url('https://api2.electriccastle.ro/skin/frontend/base/default/font=
+s/Katarine-7-Bold-webfont.woff2') format('woff2'),
+        url('https://api2.electriccastle.ro/skin/frontend/base/default/font=
+s/Katarine-7-Bold-webfont.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+    }
+</style>
+
+<!--<style type=3D"text/css">
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magent=
+o.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free L=
+icense (AFL 3.0)
+ */
+
+.email-heading h1 {
+    font-size: 16px;
+}
+.closing-text {
+    font-size: 16px;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    width: 94% !important;
+    padding: 0 3% !important;
+    display: block !important;
+  }
+
+  .container-table {
+    width: 100% !important;
+    max-width: 600px;
+    min-width: 300px;
+  }
+
+  td.store-info h4 {
+    margin-top: 8px !important;
+    margin-bottom: 0px !important;
+  }
+
+  td.store-info p {
+    margin: 5px 0 !important;
+  }
+
+  .wrapper {
+    width: 100% !important;
+    display: block;
+    padding: 5px 0 !important;
+  }
+
+  .cell-name,
+  .cell-content {
+    padding: 8px !important;
+  }
+}
+@media screen and (max-width: 450px) {
+  .email-heading,
+  .store-info {
+    float: left;
+    width: 98% !important;
+    display: block;
+    text-align: center;
+    padding: 10px 1% !important;
+    border-right: 0px !important;
+  }
+
+  .address-details, .method-info {
+    width: 85%;
+    display: block;
+  }
+
+  .store-info {
+    border-top: 1px dashed #c3ced4;
+  }
+
+  .method-info {
+    margin-bottom: 15px !important;
+  }
+}
+/* Remove link color on iOS */
+.no-link a {
+  color: #333333 !important;
+  cursor: default !important;
+  text-decoration: none !important;
+}
+
+.method-info h6,
+.address-details h6,
+.closing-text {
+  color: #000 !important;
+}
+
+td.order-details h3,
+td.store-info h4 {
+  color: #333333 !important;
+}
+
+.method-info p,
+.method-info dl {
+  margin: 5px 0 !important;
+  font-size: 12px !important;
+}
+
+td.align-center {
+  text-align: center !important;
+}
+
+td.align-right {
+  text-align: right !important;
+}
+
+/* Newsletter styles */
+td.expander {
+  padding: 0 !important;
+}
+
+table.button td,
+table.social-button td {
+  width: 92% !important;
+}
+
+table.facebook:hover td {
+  background: #2d4473 !important;
+}
+
+table.twitter:hover td {
+  background: #0087bb !important;
+}
+
+table.google-plus:hover td {
+  background: #CC0000 !important;
+}
+
+/* =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D *
+ * Product Grid
+ * =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D */
+@media screen and (max-width: 600px) {
+  .products-grid tr td {
+    width: 50% !important;
+    display: block !important;
+    float: left !important;
+  }
+}
+.product-name a:hover {
+  color: #3399cc !important;
+  text-decoration: none !important;
+}
+
+
+</style>
+-->
+<!-- Begin wrapper table -->
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"700" style=
+=3D"margin: 0 auto; background: #ffffff; border: 1px solid #ccc; mso-table-=
+lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;">
+    <tr>
+        <td style=3D"font-family: 'Roboto', sans-serif; color: #000; border=
+-collapse: collapse; vertical-align: top;">
+            <div style=3D"display: block; margin: 0 auto; max-width: 700px;=
+ width: 700px;">
+                <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" wid=
+th=3D"700" style=3D"mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-co=
+llapse: collapse;">
+                    <!-- Begin Content -->
+                    <tr class=3D"account-content">
+                        <td colspan=3D"2" style=3D"padding: 0 55px; font-fa=
+mily: 'Roboto', sans-serif; color: #000; border-collapse: collapse; vertica=
+l-align: top;">
+                                <p class=3D"img-header" style=3D"font-famil=
+y: 'Roboto', sans-serif; color: #000000; margin: 50px 0 0 0; font-size: 17p=
+x; text-align: left; line-height: 24px; padding: 0;"><img src=3D"https://ap=
+i2.electriccastle.ro/skin/frontend/rwd/default/images/new/header-ec11-logo.=
+png" height=3D"80px;" style=3D"height: 80px;"></p>
+                        </td>
+                    </tr>
+
+
+<tr class=3D"account-content">
+    <td colspan=3D"2" style=3D"padding: 0 55px; font-family: 'Roboto', sans=
+-serif; color: #000; border-collapse: collapse; vertical-align: top;">
+        <h1 style=3D"font-size: 60px; line-height: 60px; color: #000000; fo=
+nt-family: 'Katarine','Roboto', sans-serif; font-weight: bold; letter-spaci=
+ng: -0.71px; margin: 30px 0 55px 0;">Welcome<br>to the community!</h1>
+        <p class=3D"title-small" style=3D"font-family: 'Roboto', sans-serif=
+; color: #000000; margin: 0 0 35px 0; font-size: 24px; text-align: left; li=
+ne-height: 24px; padding: 0;"><strong style=3D"font-family: 'Roboto', sans-=
+serif; color: #000; font-weight: bold;">You=E2=80=99ll keep hearing news fr=
+om us, but no worries, we won=E2=80=99t spam you.</strong></p>
+        <p class=3D"subtitle-main" style=3D"font-family: 'Roboto', sans-ser=
+if; color: #000000; margin: 0 0 20px 0; font-size: 18px; text-align: left; =
+line-height: 24px; font-weight: normal;">
+            Until July we will have plenty of time to know each other bette=
+r!<br>
+            You=E2=80=99re new to all this, but there's no rocket science. =
+To Login on your account enter your email address and password <a href=3D"h=
+ttps://electriccastle.ro/login" style=3D"color: #000; text-decoration: unde=
+rline;">here</a>.<br>
+            From there you can buy tickets, merch or track your existing or=
+ders.
+        </p>
+    </td>
+</tr>
+<tr class=3D"account-content">
+    <td colspan=3D"2" style=3D"padding: 0 55px; font-family: 'Roboto', sans=
+-serif; color: #000; border-collapse: collapse; vertical-align: top;">
+        <hr class=3D"separator" style=3D"background-color: #000; border: me=
+dium none; color: #979797; height: 1px; width: 100%; margin: 20px 0; backgr=
+ound: #979797;">
+        <p class=3D"footer" style=3D"font-family: 'Roboto', sans-serif; col=
+or: #808080; margin: 0 0 20px 0; font-size: 14px; text-align: left; line-he=
+ight: 20px;">
+            By purchasing tickets for Electric Castle you agree to the fest=
+ival's Terms&amp;Conditions. Check them out <a href=3D"https://electriccast=
+le.ro/terms-and-conditions" style=3D"color: #808080; text-decoration: under=
+line; font-size: 14px; line-height: 20px;">here</a>.
+            If things get too complicated, or you have any questions,<br> c=
+ontact us at <a href=3D"mailto:orders@electriccastle.ro" style=3D"color: #8=
+08080; text-decoration: underline; font-size: 14px; line-height: 20px;">ord=
+ers@electriccastle.ro</a><br><br>
+            <strong style=3D"font-family: 'Roboto', sans-serif; color: #808=
+080; font-weight: bold; font-size: 14px; line-height: 20px;">Oh by the way!=
+</strong> Don=E2=80=99t lend fraudsters a helping hand and<br>never share t=
+ickets through social media.
+        </p>
+        <hr class=3D"separator" style=3D"background-color: #000; border: me=
+dium none; color: #979797; height: 1px; width: 100%; margin: 20px 0; backgr=
+ound: #979797;">
+    </td>
+</tr>
+
+                    <!-- End Content -->
+                    <tr>
+                        <td colspan=3D"2" style=3D"text-align: center; padd=
+ing-top: 30px; font-family: 'Roboto', sans-serif; color: #000; border-colla=
+pse: collapse; vertical-align: top;">
+                            <img src=3D"https://api2.electriccastle.ro/skin=
+/frontend/rwd/default/images/new/footer2023_logo.png" width=3D"590px" style=
+=3D"width: 590px; max-width: 100%;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style=3D"vertical-align: middle; padding: 20px =
+0 20px 55px; font-family: 'Roboto', sans-serif; color: #000; border-collaps=
+e: collapse;">
+                            <p style=3D"text-align: left; font-family: 'Rob=
+oto', sans-serif; color: #000;">
+                                <a href=3D"https://www.electriccastle.com" =
+style=3D"color: #000; text-decoration: none; font-size: 12px;">www.electric=
+castle.com</a>
+                            </p>
+                        </td>
+                        <td style=3D"vertical-align: middle; padding: 20px =
+55px 20px 0; font-family: 'Roboto', sans-serif; color: #000; border-collaps=
+e: collapse;">
+                            <p style=3D"text-align: right; font-family: 'Ro=
+boto', sans-serif; color: #000;">
+                                <a href=3D"https://www.youtube.com/user/Ele=
+ctricCastleCluj" target=3D"_blank" style=3D"color: #000;"><img src=3D"https=
+://api2.electriccastle.ro/skin/frontend/rwd/default/images/new/youtube2020.=
+png" width=3D"22px"></a>=C2=A0
+                                <a href=3D"https://www.facebook.com/Electri=
+cCastle/" target=3D"_blank" style=3D"color: #000;"><img src=3D"https://api2=
+.electriccastle.ro/skin/frontend/rwd/default/images/new/facebook2020.png" w=
+idth=3D"22px"></a>=C2=A0
+                                <a href=3D"https://www.instagram.com/electr=
+iccastle/" target=3D"_blank" style=3D"color: #000;"><img src=3D"https://api=
+2.electriccastle.ro/skin/frontend/rwd/default/images/new/instagram2020.png"=
+ width=3D"22px"></a>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
+<!-- End wrapper table -->
+</body>
+
+</html>
+ 
+--=-_-MOCE_-_62a1e8b8ed9e827602a5bcb2a59b930526315d7adb32bf0e7172bdb2683--
+--=-_-NECY_-_788b367d18befbd62bcf48273dbac69ed0cf01babcb148e6f0c5c3f6982--
