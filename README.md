@@ -7,11 +7,4 @@ A simple Python-based tool to help sales and marketing teams identify potentiall
 - Sender name and email mismatch
 - Risky links or attachments
 
-## Project Structure
-sales-phishing-email-checker/
-├── phishing_scanner.py
-├── sample_emails/
-├── report_output/
-├── requirements.txt
-└── README.md
 
