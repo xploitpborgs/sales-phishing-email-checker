@@ -5,11 +5,14 @@ import re
 import sys
 import json
 import requests
+from io import StringIO
+from datetime import datetime
 from urllib.parse import urlparse
 from email import policy
 from email.parser import BytesParser
 import tldextract
 from colorama import Fore, Style, init
+import argparse
 
 # Initialize colorama
 init(autoreset=True)
@@ -98,61 +101,82 @@ def detect_brand_mismatch(sender_name, domain, brand_list):
             return brand, legit_domain
     return None, None
 
+# === REPORT HANDLING ===
+
+def save_report(output, filename):
+    report_dir = "report_output"
+    os.makedirs(report_dir, exist_ok=True)
+    path = os.path.join(report_dir, filename)
+    with open(path, "w") as f:
+        f.write(output)
+    print(Fore.GREEN + f"📝 Report saved to: {path}")
+
 # === MAIN SCAN FUNCTION ===
 
-def scan_email(file_path, phishing_keywords, phishing_domains, brands):
-    print(Fore.YELLOW + f"\n📨 Scanning: {file_path}")
+def scan_email(file_path, phishing_keywords, phishing_domains, brands, mode="both"):
+    output = StringIO()
+    print_to = lambda x: print(x, file=output) if mode in ["save", "both"] else print(x)
+
+    print_to(Fore.YELLOW + f"\n📨 Scanning: {file_path}")
     try:
         msg = load_eml(file_path)
     except Exception as e:
-        print(Fore.RED + f"❌ Failed to parse email: {e}")
+        print_to(Fore.RED + f"❌ Failed to parse email: {e}")
         return
 
     sender, subject, body = extract_email_info(msg)
-    print(f"From: {sender}")
-    print(f"Subject: {subject}")
+    print_to(f"From: {sender}")
+    print_to(f"Subject: {subject}")
 
     domain = extract_domain(sender)
-    print(f"Sender domain: {domain}")
+    print_to(f"Sender domain: {domain}")
 
-    # Check phishing keywords
     keywords = scan_for_keywords(body, phishing_keywords)
-    print("\n🔎 Phishing Keywords:")
+    print_to("\n🔎 Phishing Keywords:")
     if keywords:
         for kw in keywords:
-            print(Fore.RED + f"- {kw}")
+            print_to(Fore.RED + f"- {kw}")
     else:
-        print(Fore.GREEN + "None")
+        print_to(Fore.GREEN + "None")
 
-    # Domain check
     if domain and domain.lower() in [d.lower() for d in phishing_domains]:
-        print(Fore.RED + f"\n🚨 Suspicious domain detected: {domain}")
+        print_to(Fore.RED + f"\n🚨 Suspicious domain detected: {domain}")
     else:
-        print(Fore.GREEN + "\n✅ Domain looks normal")
+        print_to(Fore.GREEN + "\n✅ Domain looks normal")
 
-    # URL analysis
     urls = extract_urls(body)
-    print(Fore.BLUE + f"\n🔗 URLs Found ({len(urls)}):")
+    print_to(Fore.BLUE + f"\n🔗 URLs Found ({len(urls)}):")
     for url in urls:
         parsed_domain = tldextract.extract(urlparse(url).hostname or "").registered_domain
         if is_ip_address_url(url):
-            print(Fore.RED + f"- IP-based URL: {url}")
+            print_to(Fore.RED + f"- IP-based URL: {url}")
         elif domain and parsed_domain != domain:
-            print(Fore.MAGENTA + f"- External URL: {url} (domain mismatch)")
+            print_to(Fore.MAGENTA + f"- External URL: {url} (domain mismatch)")
         else:
-            print(Fore.GREEN + f"- {url}")
+            print_to(Fore.GREEN + f"- {url}")
 
-    # Brand impersonation
     sender_name = re.sub(r"<.*?>", "", sender or "")
     brand, legit = detect_brand_mismatch(sender_name, domain, brands)
     if brand:
-        print(Fore.RED + f"\n🚨 Brand impersonation detected: '{brand.title()}' but domain is not {legit}")
+        print_to(Fore.RED + f"\n🚨 Brand impersonation detected: '{brand.title()}' but domain is not {legit}")
 
-    print(Fore.CYAN + "\n✅ Scan complete.\n")
+    print_to(Fore.CYAN + "\n✅ Scan complete.\n")
 
-# === MAIN SCRIPT ENTRY POINT ===
+    if mode in ["save", "both"]:
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        report_name = f"{os.path.basename(file_path).replace('.eml', '')}_report_{timestamp}.txt"
+        save_report(output.getvalue(), report_name)
+
+# === MAIN ENTRY POINT ===
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Phishing Email Scanner")
+    parser.add_argument(
+        "--mode", choices=["print", "save", "both"], default="both",
+        help="Choose how to display results: print to terminal, save to file, or both"
+    )
+    args = parser.parse_args()
+
     folder = "sample_emails"
     if not os.path.exists(folder):
         print(Fore.RED + f"❌ Folder not found: {folder}")
@@ -172,4 +196,4 @@ if __name__ == "__main__":
 
     for filename in eml_files:
         full_path = os.path.join(folder, filename)
-        scan_email(full_path, phishing_keywords, phishing_domains, legitimate_brands)
+        scan_email(full_path, phishing_keywords, phishing_domains, legitimate_brands, mode=args.mode)
